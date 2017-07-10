@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   var runAjaxRequest = document.getElementById('run_ajax_request');
   var runPingPong = document.getElementById('run_ping_pong');
+  var runRequestCount = document.getElementById('run_request_count');
 
   runAjaxRequest.addEventListener('click',function(){
     $.ajax( {
@@ -33,4 +34,19 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log('Hey.. The request finished!');
     });
   });
+
+  runRequestCount.addEventListener('click',function() {
+    $.ajax( {
+      url: 'http://first-ajax-api.herokuapp.com/count',
+      method: 'GET',
+      dataType: 'text',
+    }).done(function(data) {
+      console.log('Hurreey... We did it!');
+      console.log(data);
+
+      var element = document.createElement('div');
+      element.innerHTML = data;
+      document.querySelector('#step7').append(element);
+    });
+  })
 });
