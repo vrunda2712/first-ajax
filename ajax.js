@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   runPingPong.addEventListener('click',function(){
     $.ajax( {
-      url: 'http://first-ajax-api.herokuapp.com/pong',
+      url: 'http://first-ajax-api.herokuapp.com/ping',
       method: 'GET',
       dataType: 'text',
     }).done(function (data) {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('INSIDE .fail()');
         console.log(textStatus, errorThrown);
       }).always(function(){
-      console.log('INSIDE .always()');
+      console.log('Hey.. The request finished!');
     });
   });
 });
