@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var runAjaxRequest = document.getElementById('run_ajax_request');
   var runPingPong = document.getElementById('run_ping_pong');
   var runRequestCount = document.getElementById('run_request_count');
+  var runRequestTime = document.getElementById('run_request_time');
 
   runAjaxRequest.addEventListener('click',function(){
     $.ajax( {
@@ -48,5 +49,23 @@ document.addEventListener("DOMContentLoaded", function() {
       element.innerHTML = data;
       document.querySelector('#step7').append(element);
     });
-  })
+  });
+
+  runRequestTime.addEventListener('click',function() {
+    $.ajax( {
+      url: 'http://first-ajax-api.herokuapp.com/time',
+      method: 'GET',
+      dataType: 'text',
+      data: {
+        timezone: 'Europe/Sofia',
+      }
+    }).done(function(data) {
+      console.log('Hurreey... We did it!');
+      console.log(data);
+
+      var element = document.createElement('div');
+      element.innerHTML = data;
+      document.querySelector('#step8').append(element);
+    });
+  });
 });
